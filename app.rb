@@ -16,25 +16,47 @@ get("/") do
   erb(:rules)
 end
 
+get("/rock") do
+  @player_message = "We played rock!"
+  opponent_id = rand(0..2)
+  opponent = rps[opponent_id]
+  @opponent_message = "They played " + opponent + "!"
+  if opponent == rps[0]
+    @result_message = "We tied!"
+  elsif opponent == rps[1]
+    @result_message = "We lost!"
+  elsif opponent == rps[2]
+    @result_message = "We won!"
+  end
+  erb(:play_game)
+end
+
 get("/paper") do
   @player_message = "We played paper!"
   opponent_id = rand(0..2)
   opponent = rps[opponent_id]
   @opponent_message = "They played " + opponent + "!"
-  if opponent = rps[0]
-    @result_message = "We tied!"
-  elsif opponent = rps[1]
+  if opponent == rps[0]
     @result_message = "We won!"
-  elsif opponent = rps[2]
+  elsif opponent == rps[1]
+    @result_message = "We tied!"
+  elsif opponent == rps[2]
     @result_message = "We lost!"
   end
-  erb(:paper)
-end
-
-get("/rock") do
-  erb(:rock)
+  erb(:play_game)
 end
 
 get("/scissors") do
-  erb(:scissors)
+  @player_message = "We played scissors!"
+  opponent_id = rand(0..2)
+  opponent = rps[opponent_id]
+  @opponent_message = "They played " + opponent + "!"
+  if opponent == rps[0]
+    @result_message = "We lost!"
+  elsif opponent == rps[1]
+    @result_message = "We won!"
+  elsif opponent == rps[2]
+    @result_message = "We tied!"
+  end
+  erb(:play_game)
 end
