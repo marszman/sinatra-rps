@@ -1,4 +1,4 @@
-# /dice.rb
+# /sinatra-rps.rb
 
 require "sinatra"
 require "sinatra/reloader"
